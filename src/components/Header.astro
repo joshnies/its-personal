@@ -2,11 +2,11 @@
 import GitHubIcon from "../../public/icons/pixelarticons-github.svg";
 import SunIcon from "../../public/icons/pixelarticons-sun-alt.svg";
 import XIcon from "../../public/icons/pixelarticons-close.svg";
-import ProgressiveBlur from "./ProgressiveBlur.astro";
+import GradientBlur from "./GradientBlur.astro";
 ---
 
 <header>
-    <ProgressiveBlur />
+    <GradientBlur id="header-blur" />
     <nav>
         <ul>
             <li class="logo"><a href="/">Joshua Nies.</a></li>
@@ -41,7 +41,7 @@ import ProgressiveBlur from "./ProgressiveBlur.astro";
 
     header {
         position: fixed;
-        top: 0;
+        bottom: 0;
         left: 0;
         right: 0;
 
@@ -137,4 +137,25 @@ import ProgressiveBlur from "./ProgressiveBlur.astro";
             height: $theme-toggle-size;
         }
     }
+
+    .desktop {
+        top: 0;
+        bottom: default;
+    }
 </style>
+<script>
+    import { isMobile } from "../lib/util";
+
+    const desktopClass = "desktop";
+    const flipClass = "flip";
+    const header = document.getElementsByTagName("header")[0];
+    const blur = document.getElementById("header-blur");
+
+    if (!isMobile()) {
+        header.classList.add(desktopClass);
+        blur?.classList.add(flipClass);
+    } else {
+        header.classList.remove(desktopClass);
+        blur?.classList.remove(flipClass);
+    }
+</script>

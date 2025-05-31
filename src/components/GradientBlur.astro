@@ -1,8 +1,10 @@
 ---
 // Original Source: https://codepen.io/silas/pen/rNYqZoz
+
+const { id } = Astro.props;
 ---
 
-<div class="gradient-blur">
+<div id={id} class="gradient-blur">
     <div></div>
     <div></div>
     <div></div>
@@ -20,7 +22,6 @@
         bottom: 0;
         z-index: -1;
         pointer-events: none;
-        transform: rotate(180deg);
     }
 
     .gradient-blur > div,
@@ -116,5 +117,9 @@
             rgba(0, 0, 0, 0) 87.5%,
             rgba(0, 0, 0, 1) 100%
         );
+    }
+
+    .flip {
+        transform: rotate(180deg);
     }
 </style>
