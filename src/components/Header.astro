@@ -1,5 +1,6 @@
 ---
 import GitHubIcon from "../../public/icons/pixelarticons-github.svg";
+import SunIcon from "../../public/icons/pixelarticons-sun-alt.svg";
 import XIcon from "../../public/icons/pixelarticons-close.svg";
 ---
 
@@ -7,6 +8,15 @@ import XIcon from "../../public/icons/pixelarticons-close.svg";
     <nav>
         <ul>
             <li class="logo"><a href="/">Joshua Nies.</a></li>
+            <li class="social-x">
+                <a
+                    href="https://x.com/_joshnies"
+                    target="_blank"
+                    referrerpolicy="no-referrer"
+                >
+                    <XIcon />
+                </a>
+            </li>
             <li class="social-github">
                 <a
                     href="https://github.com/joshnies"
@@ -16,14 +26,10 @@ import XIcon from "../../public/icons/pixelarticons-close.svg";
                     <GitHubIcon />
                 </a>
             </li>
-            <li>
-                <a
-                    href="https://x.com/_joshnies"
-                    target="_blank"
-                    referrerpolicy="no-referrer"
-                >
-                    <XIcon />
-                </a>
+            <li class="theme-toggle">
+                <button>
+                    <SunIcon />
+                </button>
             </li>
         </ul>
     </nav>
@@ -52,24 +58,20 @@ import XIcon from "../../public/icons/pixelarticons-close.svg";
         margin: 0 auto;
     }
 
-    header svg {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
-
     header a {
         color: white;
         text-decoration: none;
     }
 
     header button {
-        width: 1.25rem;
-        height: 1.25rem;
+        width: 1.125rem;
+        height: 1.125rem;
         padding: 0;
         margin: 0;
         background: none;
         outline: none;
         border: none;
+        color: white;
     }
 
     header .logo {
@@ -78,7 +80,31 @@ import XIcon from "../../public/icons/pixelarticons-close.svg";
         font-weight: 500;
     }
 
+    header .social-x {
+        margin-right: 0.375rem;
+    }
+
+    header .social-x svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
     header .social-github {
         margin-right: 0.5rem;
+    }
+
+    header .social-github svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    header .theme-toggle {
+        width: 1.125rem;
+        height: 1.125rem;
+    }
+
+    header .theme-toggle svg {
+        width: 1.125rem;
+        height: 1.125rem;
     }
 </style>
