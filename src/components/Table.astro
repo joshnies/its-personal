@@ -6,12 +6,21 @@ import ArrowDown from "../../public/icons/pixelarticons-arrow-down.svg";
 interface Props {
     caption: string;
     rows: TableRow[];
+    yearOnly?: boolean;
 }
 
-const { caption, rows = [] } = Astro.props;
+const { caption, rows, yearOnly = false } = Astro.props;
 let rowCountLabel = rows.length.toString();
 if (rows.length < 10) {
     rowCountLabel = "0" + rowCountLabel;
+}
+
+let aTarget: astroHTML.JSX.HTMLAttributeAnchorTarget | undefined;
+let aReferrerPolicy: astroHTML.JSX.HTMLAttributeReferrerPolicy | undefined;
+
+if (rows[0]?.href.startsWith("http")) {
+    aTarget = "_blank";
+    aReferrerPolicy = "no-referrer";
 }
 ---
 
@@ -27,13 +36,21 @@ if (rows.length < 10) {
             rows.map((row) => (
                 <tr>
                     <td class="title">
-                        <a href={row.href}>
+                        <a
+                            href={row.href}
+                            target={aTarget}
+                            referrerpolicy={aReferrerPolicy}
+                        >
                             {row.title}
                             <ArrowDown class="arrow" />
                         </a>
                     </td>
                     <td class="summary">{row.summary}</td>
-                    <td class="date">{formatDate(row.date)}</td>
+                    <td class="date">
+                        {yearOnly
+                            ? row.date.getFullYear()
+                            : formatDate(row.date)}
+                    </td>
                 </tr>
             ))
         }
@@ -74,13 +91,13 @@ if (rows.length < 10) {
             .arrow {
                 width: 1.5rem;
                 height: 1.5rem;
-                transform: rotate(-90deg) translateY(-0.5rem);
                 opacity: 0;
+                transform: rotate(-90deg) translateY(-0.5rem);
                 transition: 150ms ease-out;
             }
 
             &:hover .arrow {
-                transform: rotate(-90deg) translateY(0rem);
+                transform: rotate(-90deg) translateY(-0.5rem);
                 opacity: 1;
             }
         }

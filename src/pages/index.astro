@@ -33,6 +33,22 @@ const articleRows: TableRow[] = [
         href: "/lorem",
     },
 ];
+
+const codeRows: TableRow[] = [
+    {
+        title: "its-personal",
+        summary: "(This) website. Built in Astro",
+        date: new Date("2025-01-02"),
+        href: "https://github.com/joshnies/its-personal",
+    },
+    {
+        title: "decentvcs-cli",
+        summary:
+            "CLI for DecentVCS, a simple version control system that utilizes decentralized storage.",
+        date: new Date("2022-01-02"),
+        href: "https://github.com/joshnies/decentvcs-cli",
+    },
+];
 ---
 
 <!doctype html>
@@ -63,6 +79,9 @@ const articleRows: TableRow[] = [
             </section>
             <section id="articles">
                 <Table caption="Articles" rows={articleRows} />
+            </section>
+            <section id="code">
+                <Table caption="Code" rows={codeRows} yearOnly />
             </section>
         </main>
         <Footer />
@@ -152,7 +171,8 @@ const articleRows: TableRow[] = [
             }
         }
 
-        #articles {
+        #articles,
+        #code {
             margin-top: 6rem;
             padding: 0 1rem 1rem 1rem;
         }
