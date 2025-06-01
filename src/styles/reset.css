@@ -78,3 +78,35 @@ h6 {
 #__next {
     isolation: isolate;
 }
+
+/**
+  11. [JN] Reset tables
+*/
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+table,
+th,
+td {
+    font-weight: normal;
+    text-align: left;
+    vertical-align: middle;
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+caption {
+    text-align: left;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}

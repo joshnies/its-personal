@@ -1,0 +1,132 @@
+---
+import type { TableRow } from "../types";
+import { formatDate } from "../lib/util";
+import ArrowDown from "../../public/icons/pixelarticons-arrow-down.svg";
+
+interface Props {
+    caption: string;
+    rows: TableRow[];
+}
+
+const { caption, rows = [] } = Astro.props;
+let rowCountLabel = rows.length.toString();
+if (rows.length < 10) {
+    rowCountLabel = "0" + rowCountLabel;
+}
+---
+
+<table>
+    <caption>{caption}<span class="row-count">{rowCountLabel}</span></caption>
+    <thead>
+        <th>Title</th>
+        <th>Summary</th>
+        <th>Publish Date</th>
+    </thead>
+    <tbody>
+        {
+            rows.map((row) => (
+                <tr>
+                    <td class="title">
+                        <a href={row.href}>
+                            {row.title}
+                            <ArrowDown class="arrow" />
+                        </a>
+                    </td>
+                    <td class="summary">{row.summary}</td>
+                    <td class="date">{formatDate(row.date)}</td>
+                </tr>
+            ))
+        }
+    </tbody>
+</table>
+<style lang="scss">
+    table caption {
+        font-size: 1rem;
+        font-weight: 500;
+        padding-bottom: 0.5rem;
+    }
+
+    .row-count {
+        margin-left: 0.5rem;
+        opacity: 0.5;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        border-top: 1px solid white;
+    }
+
+    td {
+        vertical-align: top;
+        padding: 0.5rem 0;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-right: 1rem;
+            text-decoration: none;
+            color: white;
+
+            .arrow {
+                width: 1.5rem;
+                height: 1.5rem;
+                transform: rotate(-90deg) translateY(-0.5rem);
+                opacity: 0;
+                transition: 150ms ease-out;
+            }
+
+            &:hover .arrow {
+                transform: rotate(-90deg) translateY(0rem);
+                opacity: 1;
+            }
+        }
+    }
+
+    td.title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: -0.5px;
+        line-height: 1.8125rem;
+    }
+
+    td.summary,
+    td.date {
+        font-size: 0.8125rem;
+        opacity: 0.8;
+        transition: 150ms ease-out;
+    }
+
+    td.date {
+        display: none;
+    }
+
+    @media screen and (width >= 900px) {
+        td.title {
+            font-size: 2rem;
+            letter-spacing: -1px;
+            line-height: 2rem;
+        }
+
+        td.summary,
+        td.date {
+            font-size: 1rem;
+        }
+
+        td.date {
+            display: block;
+        }
+
+        td a {
+            padding-right: 0;
+
+            .arrow {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+</style>
