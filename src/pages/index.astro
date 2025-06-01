@@ -9,30 +9,18 @@ import ArrowDown from "../../public/icons/pixelarticons-arrow-down.svg";
 import SelfImage from "../../public/self.jpg";
 import Table from "../components/Table.astro";
 import type { TableRow } from "../types";
+import { getCollection } from "astro:content";
 
-const articleRows: TableRow[] = [
-    {
-        title: "From Wireframes to Prototypes",
-        summary:
-            "Understanding the transition from wireframes to prototypes is crucial for effective design.",
-        date: new Date(),
-        href: "/lorem",
-    },
-    {
-        title: "From Wireframes to Prototypes",
-        summary:
-            "Understanding the transition from wireframes to prototypes is crucial for effective design.",
-        date: new Date(),
-        href: "/lorem",
-    },
-    {
-        title: "From Wireframes to Prototypes",
-        summary:
-            "Understanding the transition from wireframes to prototypes is crucial for effective design.",
-        date: new Date(),
-        href: "/lorem",
-    },
-];
+const articles = (await getCollection("blog")).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const articleRows: TableRow[] = articles.map((a) => ({
+    title: a.data.title,
+    summary: a.data.summary,
+    date: a.data.date,
+    href: `/blog/${a.id}`,
+}));
 
 const codeRows: TableRow[] = [
     {
