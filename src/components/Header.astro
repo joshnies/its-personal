@@ -1,8 +1,9 @@
 ---
+import GradientBlur from "./GradientBlur.astro";
 import GitHubIcon from "../../public/icons/pixelarticons-github.svg";
+import MoonIcon from "../../public/icons/pixelarticons-moon.svg";
 import SunIcon from "../../public/icons/pixelarticons-sun-alt.svg";
 import XIcon from "../../public/icons/pixelarticons-close.svg";
-import GradientBlur from "./GradientBlur.astro";
 ---
 
 <header>
@@ -29,8 +30,9 @@ import GradientBlur from "./GradientBlur.astro";
                 </a>
             </li>
             <li class="theme-toggle">
-                <button>
-                    <SunIcon />
+                <button id="theme-toggle-button">
+                    <MoonIcon id="theme-icon-dark" />
+                    <SunIcon id="theme-icon-light" />
                 </button>
             </li>
         </ul>
@@ -143,19 +145,75 @@ import GradientBlur from "./GradientBlur.astro";
         bottom: default;
     }
 </style>
+
+<style lang="scss" is:global>
+    #theme-icon-light {
+        display: none;
+    }
+
+    #theme-icon-dark {
+        display: block;
+    }
+
+    .light {
+        #theme-icon-light {
+            display: block;
+        }
+
+        #theme-icon-dark {
+            display: none;
+        }
+
+        header {
+            a,
+            button {
+                color: black;
+            }
+        }
+    }
+</style>
+
 <script>
+    import type { Theme } from "../lib/theme";
+    import { getTheme, setTheme } from "../lib/theme";
     import { isMobile } from "../lib/util";
 
-    const desktopClass = "desktop";
-    const flipClass = "flip";
-    const header = document.getElementsByTagName("header")[0];
-    const blur = document.getElementById("header-blur");
+    function adaptToScreenSize() {
+        const desktopClass = "desktop";
+        const flipClass = "flip";
+        const header = document.getElementsByTagName("header")[0];
+        const blur = document.getElementById("header-blur");
 
-    if (!isMobile()) {
-        header.classList.add(desktopClass);
-        blur?.classList.add(flipClass);
-    } else {
-        header.classList.remove(desktopClass);
-        blur?.classList.remove(flipClass);
+        if (!isMobile()) {
+            header.classList.add(desktopClass);
+            blur?.classList.add(flipClass);
+        } else {
+            header.classList.remove(desktopClass);
+            blur?.classList.remove(flipClass);
+        }
     }
+
+    function toggleTheme() {
+        let newTheme: Theme;
+
+        const currentTheme = getTheme();
+        if (currentTheme === "dark") {
+            newTheme = "light";
+        } else {
+            newTheme = "dark";
+        }
+
+        setTheme(newTheme);
+
+        if (newTheme === "dark") {
+            document.documentElement.classList.remove("light");
+        } else {
+            document.documentElement.classList.add("light");
+        }
+    }
+
+    const themeToggleButton = document.getElementById("theme-toggle-button");
+    themeToggleButton?.addEventListener("click", toggleTheme);
+
+    adaptToScreenSize();
 </script>

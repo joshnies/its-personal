@@ -24,7 +24,7 @@ import SelfImage from "../../public/self.jpg";
                         entrepreneur and UX designer. I create beautiful things
                         to help real people.
                     </h1>
-                    <ul>
+                    <ul class="tags">
                         <li><a href="#articles">Articles</a></li>
                         <li><a href="#code">Code</a></li>
                         <li><a href="#design">Design</a></li>
@@ -59,7 +59,7 @@ import SelfImage from "../../public/self.jpg";
             }
         }
 
-        ul {
+        .tags {
             display: flex;
             flex-wrap: wrap;
             align-items: start;
@@ -72,7 +72,7 @@ import SelfImage from "../../public/self.jpg";
             padding: 0;
         }
 
-        li {
+        .tags li {
             height: $tag-size;
             padding: 0;
             margin: 0;
@@ -117,7 +117,6 @@ import SelfImage from "../../public/self.jpg";
             width: 100%;
             height: $hero-height;
             max-height: $hero-max-height;
-            background: blue;
 
             img {
                 height: 100%;
@@ -158,4 +157,27 @@ import SelfImage from "../../public/self.jpg";
             }
         }
     </style>
+
+    <style lang="scss" is:global>
+        .light {
+            .tags li a {
+                color: black !important;
+                border-color: black !important;
+
+                &:hover {
+                    color: white !important;
+                    background: black !important;
+                }
+            }
+        }
+    </style>
+
+    <script>
+        import { getTheme } from "../lib/theme";
+
+        const theme = getTheme();
+        if (theme == "light") {
+            document.documentElement.classList.add("light");
+        }
+    </script>
 </html>
