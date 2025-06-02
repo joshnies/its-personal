@@ -10,4 +10,21 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+const designs = defineCollection({
+  loader: glob({ base: "./src/content/designs", pattern: "**/*.{yaml,yml}" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      year: z.number(),
+      cover: image(),
+      items: z.array(
+        z.object({
+          image: image(),
+          caption: z.string(),
+        }),
+      ),
+    }),
+});
+
+export const collections = { articles, designs };
