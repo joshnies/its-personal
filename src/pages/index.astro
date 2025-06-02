@@ -6,7 +6,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import ArrowDown from "../../public/icons/pixelarticons-arrow-down.svg";
-import SelfImage from "../../public/self.jpg";
+import HeroImage from "../../public/photo-001.jpg";
 import Table from "../components/Table.astro";
 import type { TableRow } from "../types";
 import { getCollection } from "astro:content";
@@ -62,7 +62,10 @@ const codeRows: TableRow[] = [
                     <ArrowDown class="arrow-down" />
                 </aside>
                 <div class="hero-img">
-                    <Image src={SelfImage} alt="Selfie" />
+                    <Image
+                        src={HeroImage}
+                        alt="Tampa, FL 2024. FujiFilm XT-4 50mm."
+                    />
                 </div>
             </section>
             <section id="articles">
