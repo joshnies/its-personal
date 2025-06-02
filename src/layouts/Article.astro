@@ -1,0 +1,79 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { formatDate } from "../lib/util";
+import Signature from "../../public/signature.svg";
+
+type Props = CollectionEntry<"articles">["data"];
+
+const { title, description, date } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <section id="frontmatter">
+                <time>{formatDate(date)}</time>
+                <h1>{title}</h1>
+            </section>
+            <article>
+                <slot />
+                <Signature id="signature" />
+            </article>
+        </main>
+        <Footer />
+    </body><style lang="scss">
+        main {
+            padding: 1rem;
+        }
+
+        #frontmatter {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-top: 128px;
+
+            time {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                font-size: 0.8125rem;
+                color: white;
+                opacity: 0.8;
+
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                    transform: rotate(90deg);
+                }
+            }
+
+            h1 {
+                font-size: 4rem;
+                font-weight: normal;
+                letter-spacing: -3px;
+                line-height: 4rem;
+                margin-top: 1rem;
+            }
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 650px;
+            font-size: 1rem;
+            margin: 0 auto;
+            padding-top: 6rem;
+        }
+
+        #signature {
+            margin-top: 4rem;
+        }
+    </style>
+</html>
