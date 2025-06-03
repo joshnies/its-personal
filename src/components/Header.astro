@@ -10,12 +10,13 @@ import XIcon from "../../public/icons/pixelarticons-close.svg";
     <GradientBlur id="header-blur" />
     <nav>
         <ul>
-            <li class="logo"><a href="/">Joshua Nies.</a></li>
+            <li class="logo"><a href="/" aria-label="Home">Joshua Nies.</a></li>
             <li class="social-x">
                 <a
                     href="https://x.com/_joshnies"
                     target="_blank"
                     referrerpolicy="no-referrer"
+                    aria-label="X"
                 >
                     <XIcon />
                 </a>
@@ -25,12 +26,17 @@ import XIcon from "../../public/icons/pixelarticons-close.svg";
                     href="https://github.com/joshnies"
                     target="_blank"
                     referrerpolicy="no-referrer"
+                    aria-label="GitHub"
                 >
                     <GitHubIcon />
                 </a>
             </li>
             <li class="theme-toggle">
-                <button id="theme-toggle-button" type="button">
+                <button
+                    id="theme-toggle-button"
+                    type="button"
+                    aria-label="Toggle theme"
+                >
                     <MoonIcon id="theme-icon-dark" />
                     <SunIcon id="theme-icon-light" />
                 </button>
