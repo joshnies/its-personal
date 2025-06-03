@@ -25,7 +25,12 @@ if (rows[0]?.href.startsWith("http")) {
 ---
 
 <table>
-    <caption>{caption}<span class="row-count">{rowCountLabel}</span></caption>
+    <caption>
+        <div>
+            {caption}<span class="row-count">{rowCountLabel}</span>
+        </div>
+        <slot />
+    </caption>
     <thead>
         <th>Title</th>
         <th>Summary</th>
@@ -58,6 +63,10 @@ if (rows[0]?.href.startsWith("http")) {
 </table>
 <style lang="scss">
     table caption {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         font-size: 1rem;
         font-weight: 500;
         padding-bottom: 0.5rem;
@@ -121,6 +130,10 @@ if (rows[0]?.href.startsWith("http")) {
     }
 
     @media screen and (width >= 900px) {
+        table caption {
+            gap: 1rem;
+        }
+
         td.title {
             font-size: 2rem;
             letter-spacing: -1px;
