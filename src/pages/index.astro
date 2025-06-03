@@ -9,8 +9,8 @@ import Table from "../components/Table.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import type { TableRow } from "../types";
 import ArrowDown from "../../public/icons/pixelarticons-arrow-down.svg";
-import HeroImage from "../../public/photo-001.jpg";
 import SignalIcon from "../../public/icons/pixelarticons-radio-signal.svg";
+import HeroImage from "../../public/photo-001.jpg";
 
 const articles = (await getCollection("articles")).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -85,7 +85,7 @@ const codeRows: TableRow[] = [
                         referrerpolicy="no-referrer"
                     >
                         <SignalIcon />
-                        Subscribe with RSS
+                        <span id="prefix">Subscribe with </span>RSS
                     </a>
                 </Table>
             </section>
@@ -209,6 +209,10 @@ const codeRows: TableRow[] = [
                 height: 1rem;
             }
 
+            #prefix {
+                display: none;
+            }
+
             &:hover {
                 background: white;
                 border-color: white;
@@ -250,6 +254,10 @@ const codeRows: TableRow[] = [
                 width: 100%;
                 height: $hero-height;
                 max-height: $hero-max-height;
+            }
+
+            #rss-link #prefix {
+                display: inline;
             }
         }
     </style>
