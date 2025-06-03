@@ -8,9 +8,13 @@ export async function GET(context) {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: context.site,
-    items: posts.map((post) => ({
-      ...post.data,
-      link: `/articles/${post.id}/`,
+    items: posts.map((a) => ({
+      title: a.data.title,
+      description: a.data.description,
+      pubDate: a.data.pubDate,
+      link: `/articles/${a.id}/`,
+      content: a.body,
     })),
+    customData: "<language>en-us</language>",
   });
 }

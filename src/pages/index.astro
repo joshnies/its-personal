@@ -13,13 +13,13 @@ import SignalIcon from "../../public/icons/pixelarticons-radio-signal.svg";
 import HeroImage from "../../public/photo-001.jpg";
 
 const articles = (await getCollection("articles")).sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 const articleRows: TableRow[] = articles.map((a) => ({
     title: a.data.title,
     summary: a.data.description,
-    date: a.data.date,
+    date: a.data.pubDate,
     href: `/articles/${a.id}`,
 }));
 
