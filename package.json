@@ -2,6 +2,8 @@
   "name": "its-personal",
   "type": "module",
   "version": "1.0.0",
+  "author": "Joshua Nies",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
