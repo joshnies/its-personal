@@ -19,3 +19,12 @@ const { Content } = await render(article);
 <Article {...article.data}>
     <Content />
 </Article>
+
+<script>
+    import { getTheme } from "../../lib/theme";
+
+    const theme = getTheme();
+    if (theme == "light") {
+        document.documentElement.classList.add("light");
+    }
+</script>
