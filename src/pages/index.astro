@@ -5,11 +5,11 @@ import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import RSSLink from "../components/RSSLink.astro";
 import Table from "../components/Table.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import type { TableRow } from "../types";
 import ArrowDown from "../../public/icons/pixelarticons-arrow-down.svg";
-import SignalIcon from "../../public/icons/pixelarticons-radio-signal.svg";
 import HeroImage from "../../public/photo-001.jpg";
 
 const articles = (await getCollection("articles")).sort(
@@ -78,15 +78,7 @@ const codeRows: TableRow[] = [
             </section>
             <section id="articles">
                 <Table caption="Articles" rows={articleRows}>
-                    <a
-                        id="rss-link"
-                        href="/rss.xml"
-                        target="_blank"
-                        referrerpolicy="no-referrer"
-                    >
-                        <SignalIcon />
-                        <span id="prefix">Subscribe with </span>RSS
-                    </a>
+                    <RSSLink />
                 </Table>
             </section>
             <section id="code">
@@ -186,33 +178,6 @@ const codeRows: TableRow[] = [
             padding: 0 1rem 1rem 1rem;
         }
 
-        #rss-link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.375rem;
-            background: none;
-            outline: none;
-            height: 24px;
-            border: 1px solid;
-            margin: 0;
-            padding: 0 0.5rem;
-            font-family: "JetBrainsMono", monospace;
-            font-size: 0.75rem;
-            text-decoration: none;
-            transition: 100ms ease-out;
-            cursor: pointer;
-
-            svg {
-                width: 1rem;
-                height: 1rem;
-            }
-
-            #prefix {
-                display: none;
-            }
-        }
-
         html.light {
             .tags li a {
                 color: black;
@@ -222,36 +187,6 @@ const codeRows: TableRow[] = [
                     color: white;
                     background: black;
                 }
-            }
-
-            #rss-link {
-                border-color: rgba(#000, 0.4);
-                color: rgba(#000, 0.8);
-
-                &:hover {
-                    background: black;
-                    border-color: black;
-                    color: white;
-                }
-
-                &:active {
-                    opacity: 0.7;
-                }
-            }
-        }
-
-        html:not(.light) #rss-link {
-            color: rgba(#ffffff, 0.8);
-            border-color: rgba(#ffffff, 0.4);
-
-            &:hover {
-                background: white;
-                border-color: white;
-                color: black;
-            }
-
-            &:active {
-                opacity: 0.8;
             }
         }
 
@@ -285,10 +220,6 @@ const codeRows: TableRow[] = [
                 width: 100%;
                 height: $hero-height;
                 max-height: $hero-max-height;
-            }
-
-            #rss-link #prefix {
-                display: inline;
             }
         }
     </style>

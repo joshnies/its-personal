@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { formatDate } from "../lib/util";
 import Signature from "../../public/signature.svg";
+import RSSLink from "../components/RSSLink.astro";
 
 type Props = CollectionEntry<"articles">["data"];
 
@@ -19,7 +20,10 @@ const { title, description, pubDate } = Astro.props;
         <Header />
         <main>
             <section id="frontmatter">
-                <time>{formatDate(pubDate)}</time>
+                <div id="frontmatter-topline">
+                    <time>{formatDate(pubDate)}</time>
+                    <RSSLink />
+                </div>
                 <h1>{title}</h1>
             </section>
             <article>
@@ -59,6 +63,11 @@ const { title, description, pubDate } = Astro.props;
                 line-height: 2.5rem;
                 margin-top: 0.5rem;
             }
+        }
+
+        #frontmatter-topline {
+            display: flex;
+            gap: 1rem;
         }
 
         article {
