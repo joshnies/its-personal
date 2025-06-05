@@ -35,6 +35,6 @@ bonds, and a more vibrant company culture.
 
 It is absolutely critical to the health of the general public that we don't lose sight of the
 importance of face-to-face interactions in fostering innovation and camaraderie within teams. The
-spontaneous nature of these exchanges allows for the free flow of ideas and the development of personal
-connections that are difficult, if not impossible, to replicate one-to-one in a purely digital
-environment.
+spontaneous nature of these exchanges allows for the free flow of ideas and the development of
+personal connections that are difficult, if not impossible, to replicate one-to-one in a purely
+digital environment.
