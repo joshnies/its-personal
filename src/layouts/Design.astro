@@ -12,6 +12,7 @@ const { title, description, year, cover, items } = Astro.props;
 <html lang="en">
     <head>
         <BaseHead title={title} description={description} />
+        <meta name="fediverse:creator" content="@joshnies@mastodon.social" />
     </head>
     <body>
         <Header />
