@@ -9,8 +9,8 @@ import RSSLink from "../components/RSSLink.astro";
 import Table from "../components/Table.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import type { TableRow } from "../types";
+import HeroImage from "../../public/home-hero.jpg";
 import ArrowDown from "../../public/icons/pixelarticons-arrow-down.svg";
-import HeroImage from "../../public/photo-001.jpg";
 
 const articles = (await getCollection("articles")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
