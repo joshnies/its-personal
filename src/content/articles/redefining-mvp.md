@@ -85,40 +85,6 @@ this, it’s still vital to spend time determining your customers personas,
 conducting proper customer interviews, and sending prototypes to others for them
 to try out and provide you with feedback.
 
-## Vela
-
-As a testament to this philosophy, I'm building my own Minimum Remarkable
-Product:
-[Vela](https://joshnies.substack.com/p/introducing-vela-a-new-kind-of-workplace?r=3zmcc5),
-a new kind of workplace messaging platform designed to foster human connection.
-By developing Vela as a native macOS desktop app with a Rust backend, I'm aiming
-to achieve a truly beautiful and refined experience for my target audience,
-which includes myself.
-
-<br />
-
-This approach allows me to leverage the power and efficiency of native macOS
-development, resulting in a sleek, responsive interface that feels right at home
-on Apple devices. The use of native UI components ensures a consistent look and
-feel with the operating system, enhancing user familiarity and comfort.
-
-<br />
-
-Meanwhile, the Rust backend provides exceptional performance and reliability.
-Rust's memory safety guarantees and concurrency model enable me to build a
-robust, high-performance backend that can handle complex operations with minimal
-resource usage. This translates to a snappy, responsive application that is
-unlikely to drive up operational costs in the long-term. As a solo founder with
-zero capital, this is critical.
-
-<br />
-
-Ultimately, the application not only meets the basic requirements but exceeds
-expectations in terms of user experience, performance, and reliability. This
-approach aligns perfectly with the concept of a Minimum Remarkable Product, as
-it allows me to deliver a polished, high-quality solution from the outset,
-setting a strong foundation for future iterations and improvements.
-
 ## Final thoughts
 
 I probably recall this photography quote I heard somewhere at least once a week,

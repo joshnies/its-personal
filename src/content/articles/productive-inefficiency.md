@@ -1,5 +1,5 @@
 ---
-title: "Productive inefficiency"
+title: "Productive Inefficiency"
 description: "Embracing human collaboration and rejecting conventional productivity."
 pubDate: 2024-08-31
 ---
