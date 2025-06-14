@@ -16,5 +16,8 @@
     "@astrojs/sitemap": "^3.4.0",
     "astro": "^5.8.0",
     "sass": "^1.89.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }
