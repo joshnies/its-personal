@@ -3,8 +3,8 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
 import RSSLink from "../components/RSSLink.astro";
 import Table from "../components/Table.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
@@ -16,35 +16,12 @@ const articles = (await getCollection("articles")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const articleRows: TableRow[] = articles.map((a) => ({
+const journalRows: TableRow[] = articles.map((a) => ({
     title: a.data.title,
     summary: a.data.description,
     date: a.data.pubDate,
-    href: `/articles/${a.id}`,
+    href: `/journal/${a.id}`,
 }));
-
-const codeRows: TableRow[] = [
-    {
-        title: "its-personal",
-        summary: "(This) website. Built in Astro.",
-        date: new Date("2025-01-02"),
-        href: "https://github.com/joshnies/its-personal",
-    },
-    {
-        title: "decentvcs-cli",
-        summary:
-            "CLI for DecentVCS, a simple version control system that utilizes decentralized storage.",
-        date: new Date("2022-01-02"),
-        href: "https://github.com/joshnies/decentvcs-cli",
-    },
-    {
-        title: "decentvcs-server",
-        summary:
-            "HTTP server for DecentVCS, a simple version control system that utilizes decentralized storage.",
-        date: new Date("2022-01-02"),
-        href: "https://github.com/joshnies/decentvcs-server",
-    },
-];
 ---
 
 <!doctype html>
@@ -53,175 +30,11 @@ const codeRows: TableRow[] = [
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
     <body>
-        <Header />
+        <Nav />
         <main>
-            <section id="hero">
-                <aside>
-                    <h1>
-                        Christ-follower, professional software engineer, forever
-                        entrepreneur and UX designer. I create beautiful things
-                        to help real people.
-                    </h1>
-                    <ul class="tags">
-                        <li><a href="#articles">Articles</a></li>
-                        <li><a href="#code">Code</a></li>
-                        <!-- <li><a href="#design">Design</a></li> -->
-                    </ul>
-                    <ArrowDown class="arrow-down" />
-                </aside>
-                <div class="hero-img">
-                    <Image
-                        src={HeroImage}
-                        alt="St. Petersburg, FL 2024. FujiFilm XT-4 50mm."
-                    />
-                </div>
-            </section>
-            <section id="articles">
-                <Table caption="Articles" rows={articleRows}>
-                    <RSSLink />
-                </Table>
-            </section>
-            <section id="code">
-                <Table caption="Code" rows={codeRows} yearOnly />
-            </section>
         </main>
-        <Footer />
     </body><!-- -->
     <style lang="scss">
-        $header-height: 48px;
-        $hero-height: calc(100vh - 48px - 16px);
-        $hero-max-height: 64rem;
-        $tag-size: 2.25rem;
-
-        #hero {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            width: 100%;
-            margin-top: $header-height;
-            padding: 0 1rem;
-
-            ul,
-            .arrow-down {
-                display: none;
-            }
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: start;
-            column-gap: 0.5rem;
-            grid-row: 4;
-            height: calc(($tag-size * 2) + 1rem);
-
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .tags li {
-            height: $tag-size;
-            padding: 0;
-            margin: 0;
-
-            a {
-                display: flex;
-                align-items: center;
-                height: 100%;
-                border: 1px solid white;
-                border-radius: calc($tag-size / 2);
-                padding: 0 0.75rem;
-                margin: 0;
-                text-decoration: none;
-                font-size: 1.25rem;
-                font-weight: normal;
-                color: white;
-                transition: 150ms ease-out;
-
-                &:hover {
-                    color: black;
-                    background: white;
-                }
-            }
-        }
-
-        .arrow-down {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: normal;
-            letter-spacing: -1px;
-            line-height: 2.125rem;
-        }
-
-        .hero-img {
-            width: 100%;
-            height: $hero-height;
-            max-height: $hero-max-height;
-
-            img {
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-
-        #articles,
-        #code {
-            margin-top: 6rem;
-            padding: 0 1rem 1rem 1rem;
-        }
-
-        html.light {
-            .tags li a {
-                color: black;
-                border-color: black;
-
-                &:hover {
-                    color: white;
-                    background: black;
-                }
-            }
-        }
-
-        @media screen and (width >= 900px) {
-            #hero {
-                flex-direction: row;
-
-                h1 {
-                    grid-column-end: span 2;
-                    grid-row-end: span 2;
-                    font-size: 3rem;
-                    line-height: 3.125rem;
-                }
-
-                ul {
-                    display: flex;
-                }
-
-                .arrow-down {
-                    display: block;
-                }
-            }
-
-            aside {
-                position: relative;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: 128px;
-                gap: 32px 16px;
-
-                width: 100%;
-                height: $hero-height;
-                max-height: $hero-max-height;
-            }
-        }
     </style>
 
     <script>
@@ -233,3 +46,13 @@ const codeRows: TableRow[] = [
         }
     </script>
 </html>
+
+<style lang="scss">
+    body {
+        display: grid;
+        grid-template-columns: 6;
+        grid-auto-rows: 64px;
+        gap: 16px;
+        padding: 16px 32px;
+    }
+</style>

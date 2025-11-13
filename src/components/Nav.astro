@@ -1,0 +1,126 @@
+---
+import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
+import GitHubIcon from "../../public/icons/mdi_github.svg";
+import TwitterIcon from "../../public/icons/mdi_twitter.svg";
+---
+
+<header>
+    <nav>
+        <ul id="nav-pages">
+            <li class="active"><a href="/" aria-label="Journal"><span class="keybind">[1]</span>Journal</a></li>
+            <li><a href="/design" aria-label="Design"><span class="keybind">[2]</span>Design</a></li>
+            <li><a href="/about" aria-label="About"><span class="keybind">[3]</span>About</a></li>
+        </ul>
+        <ul id="nav-social">
+            <li>
+                <a
+                    href="https://bsky.app/profile/joshnies.bsky.social"
+                    target="_blank"
+                    referrerpolicy="no-referrer"
+                    rel="me"
+                    aria-label="Bluesky"
+                >
+                    <BlueskyIcon />
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://x.com/_joshnies"
+                    target="_blank"
+                    referrerpolicy="no-referrer"
+                    rel="me"
+                    aria-label="Twitter"
+                >
+                    <TwitterIcon />
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://github.com/joshnies"
+                    target="_blank"
+                    referrerpolicy="no-referrer"
+                    aria-label="GitHub"
+                >
+                    <GitHubIcon />
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<style lang="scss">
+    header {
+        grid-column: 1 / -1;
+    }
+
+    nav {
+        display: flex;
+        gap: 4px;
+        font-family: "IBM Plex Mono", monospace;
+        text-transform: uppercase;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    #nav-pages {
+        display: flex;
+        gap: 4px;
+
+        li {
+            height: 24px;
+            padding: 0 4px;
+            background: rgba(#ffffff, 0.15);
+            transition: 0.1s ease-out;
+
+            &:hover, &.active {
+                background: white;
+                a {
+                    color: black;
+                }
+            }
+        }
+    }
+
+    #nav-social {
+        display: flex;
+        gap: 4px;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: rgba(#ffffff, 0.15);
+            transition: 0.1s ease-out;
+
+            &:hover {
+                background: white;
+                svg {
+                    color: black;
+                }
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+                color: white;
+            }
+        }
+    }
+
+    .keybind {
+        padding-right: 2px;
+    }
+</style>
