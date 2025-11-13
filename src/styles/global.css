@@ -23,10 +23,14 @@ html {
     color: white;
 }
 
-main {
+body {
+    display: grid;
+    grid-template-columns: 6;
+    grid-auto-rows: 64px;
+    gap: 16px;
     max-width: 1100px;
     margin: 0 auto;
-    /* padding: 1rem 0; */
+    padding: 16px 32px;
 }
 
 .light {
