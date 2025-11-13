@@ -5,7 +5,6 @@ const articles = defineCollection({
   loader: glob({ base: "./src/content/articles", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
-    description: z.string(),
     pubDate: z.coerce.date(),
   }),
 });

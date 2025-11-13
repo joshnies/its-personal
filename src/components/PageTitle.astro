@@ -1,0 +1,24 @@
+---
+const { count } = Astro.props;
+---
+
+<div><h1>Journal.</h1><span>({count})</span></div>
+
+<style lang="scss">
+    div {
+        display: flex;
+        grid-column: 1 / -1;
+
+        h1 {
+            font-size: 6rem;
+            line-height: 6.75rem;
+        }
+
+        span {
+            display: block;
+            font-size: 2rem;
+            padding-top: 0.5rem;
+        }
+    }
+</style>
+

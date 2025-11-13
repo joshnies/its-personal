@@ -5,23 +5,20 @@ import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import PageTitle from "../components/PageTitle.astro";
 import RSSLink from "../components/RSSLink.astro";
 import Table from "../components/Table.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import type { TableRow } from "../types";
+
 import HeroImage from "../../public/home-hero.jpg";
 import ArrowDown from "../../public/icons/pixelarticons-arrow-down.svg";
+import ArrowOutward from "../../public/icons/material_symbols_arrow_outward.svg";
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { formatDate} from '../lib/util';
 
 const articles = (await getCollection("articles")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
-const journalRows: TableRow[] = articles.map((a) => ({
-    title: a.data.title,
-    summary: a.data.description,
-    date: a.data.pubDate,
-    href: `/journal/${a.id}`,
-}));
 ---
 
 <!doctype html>
@@ -31,34 +28,75 @@ const journalRows: TableRow[] = articles.map((a) => ({
     </head>
     <body>
         <Nav />
-        <div id="page-title"><h1>Journal.</h1><span>({journalRows.length})</span></div>
-    </body><!-- -->
-    <style lang="scss">
-    </style>
+        <PageTitle count={articles.length}>Journal</PageTitle>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {articles.map(article => (
+                    <tr class="row" data-href={`journal/${article.id}`}>
+                        <td class="title"><a href="/">{article.data.title}<ArrowOutward /></a></td>
+                        <td>{formatDate(article.data.pubDate)}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </body>
 
     <script>
-        import { getTheme } from "../lib/theme";
-
-        const theme = getTheme();
-        if (theme == "light") {
-            document.documentElement.classList.add("light");
-        }
+        
     </script>
 </html>
 
 <style lang="scss">
-    #page-title {
+    table {
         grid-column: 1 / -1;
-        display: flex;
+        grid-row: 3;
+        margin-top: 40px;
+    }
 
-        h1 {
-            font-size: 4rem;
+    thead tr {
+        font-family: "IBM Plex Mono", monospace;
+        border-bottom: 1px solid rgba(#ffffff, 0.07);
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        color: rgba(#ffffff, 0.6);
+    }
+
+    tbody tr {
+        height: 48px;
+        font-size: 1rem;
+        transition: 0.1s ease-out;
+
+        &:hover {
+            background: white;
+            color: black;
+            .title a {
+                color: black;
+            }
         }
 
-        span {
-            display: block;
-            font-size: 1.25rem;
-            padding-top: 1rem;
+        .title {
+            font-size: 2rem;
+
+            a {
+                display: flex;
+                gap: 8px;
+                color: white;
+                text-decoration: none;
+            }
+
+            svg {
+                width: 32px;
+                height: 32px;
+                margin-top: 6px;
+                color: black;
+            }
         }
     }
 </style>
+
