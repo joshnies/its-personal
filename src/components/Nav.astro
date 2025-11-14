@@ -1,17 +1,24 @@
 ---
-import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
-import GitHubIcon from "../../public/icons/mdi_github.svg";
-import TwitterIcon from "../../public/icons/mdi_twitter.svg";
+// import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
+// import GitHubIcon from "../../public/icons/mdi_github.svg";
+// import TwitterIcon from "../../public/icons/mdi_twitter.svg";
+
+interface Props {
+    active: "journal" | "projects" | "about";
+}
+
+const { active } = Astro.props;
 ---
 
 <header>
     <nav>
-        <ul id="nav-pages">
-            <li class="active"><a href="/" aria-label="Journal"><span class="keybind">[1]</span>Journal</a></li>
-            <li><a href="/design" aria-label="Design"><span class="keybind">[2]</span>Design</a></li>
-            <li><a href="/about" aria-label="About"><span class="keybind">[3]</span>About</a></li>
-        </ul>
-        <ul id="nav-social">
+        <ul>
+            <li id="site-title">
+                <a href="/">Josh Nies</a>
+            </li>
+            <li><a href="/" class={active === "journal" ? "active": ""}>Journal,</a></li>
+            <li><a href="/projects" class={active === "projects" ? "active": ""}>Projects,</a></li>
+            <li><a href="/about" class={active === "about" ? "active": ""}>About,</a></li>
             <li>
                 <a
                     href="https://bsky.app/profile/joshnies.bsky.social"
@@ -20,20 +27,20 @@ import TwitterIcon from "../../public/icons/mdi_twitter.svg";
                     rel="me"
                     aria-label="Bluesky"
                 >
-                    <BlueskyIcon />
+                    Bluesky,
                 </a>
             </li>
-            <li>
-                <a
-                    href="https://x.com/_joshnies"
-                    target="_blank"
-                    referrerpolicy="no-referrer"
-                    rel="me"
-                    aria-label="Twitter"
-                >
-                    <TwitterIcon />
-                </a>
-            </li>
+            <!-- <li> -->
+            <!--     <a -->
+            <!--         href="https://x.com/_joshnies" -->
+            <!--         target="_blank" -->
+            <!--         referrerpolicy="no-referrer" -->
+            <!--         rel="me" -->
+            <!--         aria-label="Twitter" -->
+            <!--     > -->
+            <!--         Twitter, -->
+            <!--     </a> -->
+            <!-- </li> -->
             <li>
                 <a
                     href="https://github.com/joshnies"
@@ -41,7 +48,7 @@ import TwitterIcon from "../../public/icons/mdi_twitter.svg";
                     referrerpolicy="no-referrer"
                     aria-label="GitHub"
                 >
-                    <GitHubIcon />
+                    GitHub
                 </a>
             </li>
         </ul>
@@ -50,22 +57,13 @@ import TwitterIcon from "../../public/icons/mdi_twitter.svg";
 
 <style lang="scss">
     header {
-        grid-column: 1 / -1;
-    }
-
-    nav {
-        display: flex;
-        gap: 4px;
-        font-family: "IBM Plex Mono", monospace;
-        text-transform: uppercase;
-    }
-
-    a {
-        color: white;
-        text-decoration: none;
+        grid-column: span 5;
+        font-size: 1.25rem;
     }
 
     ul {
+        display: flex;
+        gap: 4px;
         padding: 0;
     }
 
@@ -73,54 +71,26 @@ import TwitterIcon from "../../public/icons/mdi_twitter.svg";
         list-style: none;
     }
 
-    #nav-pages {
-        display: flex;
-        gap: 4px;
+    a {
+        color: white;
+        opacity: 0.6;
+        text-decoration: none;
+        transition: 150ms ease-out;
 
-        li {
-            height: 24px;
-            padding: 0 4px;
-            background: rgba(#ffffff, 0.15);
-            transition: 0.1s ease-out;
+        &:hover {
+            opacity: 0.8;
+        }
 
-            &:hover, &.active {
-                background: white;
-                a {
-                    color: black;
-                }
-            }
+        &.active {
+            opacity: 1;
         }
     }
 
-    #nav-social {
-        display: flex;
-        gap: 4px;
-
-        li {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            background: rgba(#ffffff, 0.15);
-            transition: 0.1s ease-out;
-
-            &:hover {
-                background: white;
-                svg {
-                    color: black;
-                }
-            }
-
-            svg {
-                width: 20px;
-                height: 20px;
-                color: white;
-            }
+    #site-title {
+        flex-grow: 1;
+        
+        a {
+            opacity: 1;
         }
-    }
-
-    .keybind {
-        padding-right: 2px;
     }
 </style>
