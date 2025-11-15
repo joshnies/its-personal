@@ -41,10 +41,19 @@ const { title, pubDate } = Astro.props;
                 <br />
                 Based in Tampa, FL, USA.
             </aside>
+            <Footer />
         </main>
-        <!-- <Footer /> -->
     </body>
 </html>
+
+<style lang="scss" is:global>
+    footer {
+        display: flex;
+        align-items: end;
+        grid-column: span 3;
+        padding-bottom: 1rem;
+    }
+</style>
 
 <style lang="scss">
     h1 {
@@ -60,10 +69,8 @@ const { title, pubDate } = Astro.props;
 
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1.5rem 1fr;
+        grid-template-rows: 1.5rem 1fr 32rem;
         gap: 1.5rem;
-
-        height: 100%;
     }
 
     time {
@@ -101,8 +108,17 @@ const { title, pubDate } = Astro.props;
 </style>
 
 <style lang="scss" is:global>
+    article {
+        font-size: 1.25rem;
+    }
+
     article a {
         transition: 150ms ease-out;
+    }
+
+    article h2 {
+        font-size: 2.5rem;
+        margin-top: 3rem;
     }
 
     /** light theme */

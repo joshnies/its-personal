@@ -44,6 +44,15 @@ const articles = (await getCollection("articles")).sort(
     <Footer />
 </html>
 
+<style lang="scss" is:global>
+    footer {
+        display: flex;
+        align-items: end;
+        grid-column: span 5;
+        padding-bottom: 1rem;
+    }
+</style>
+
 <style lang="scss">
     h1 {
         grid-column: span 3;
