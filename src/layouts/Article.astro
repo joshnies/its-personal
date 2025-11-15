@@ -22,96 +22,67 @@ const bskyText = Astro.url.href;
         <meta name="fediverse:creator" content={BSKY_HANDLE} />
     </head>
     <body>
-        <Nav active="journal" />
-        <h1>{title}/</h1>
         <main>
-            <time>{formatDate(pubDate)}</time>
-            <a
-                href={`https://bsky.app/intent/compose?text=${bskyText}`}
-                target="_blank"
-                referrerpolicy="no-referrer"
-                class="frontmatter-link"
-            >
-                <BlueskyIcon />Share on Bluesky
-            </a>
-            <h4>About the author</h4>
-            <article>
-                <slot />
-            </article>
-            <aside>
-                Software engineer, designer and entrepreneur focused on building
-                humanely-designed, relentlessly-fast products that bring true
-                value and delight to others.
-                <br />
-                <br />
-                A devout Christ-follower, I hope to encourage other believers to
-                reach their full potential and serve others as Christ serves us.
-                <br />
-                <br />
-                Based in Tampa, FL, USA.
-            </aside>
-            <Footer />
+            <Nav active="journal" />
+            <div id="container">
+                <h1>{title}/</h1>
+                <section id="frontmatter">
+                    <time>{formatDate(pubDate)}</time>
+                    <a
+                        href={`https://bsky.app/intent/compose?text=${bskyText}`}
+                        target="_blank"
+                        referrerpolicy="no-referrer"
+                    >
+                        <BlueskyIcon />Share on Bluesky
+                    </a>
+                </section>
+                <article>
+                    <slot />
+                </article>
+            </div>
         </main>
+        <Footer />
     </body>
 </html>
 
-<style lang="scss" is:global>
-    footer {
-        display: flex;
-        align-items: end;
-        grid-column: span 3;
-        padding-bottom: 1rem;
-    }
-</style>
-
 <style lang="scss">
+    #container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
     h1 {
-        grid-column: 2 / 4;
-        grid-row: span 2;
         font-size: 4.75rem;
         font-weight: 400;
         line-height: 4.625rem;
+        margin-bottom: 96px;
     }
 
-    main {
-        grid-column: 2 / 5;
-
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1.5rem 1fr 32rem;
-        gap: 1.5rem;
-    }
-
-    time {
-        opacity: 0.6;
-    }
-
-    .frontmatter-link {
+    #frontmatter {
         display: flex;
-        gap: 4px;
-        color: white;
-        opacity: 0.6;
-        transition: 150ms ease-out;
+        gap: 64px;
+        padding-bottom: 24px;
 
-        &:hover {
-            opacity: 1;
+        time {
+            opacity: 0.6;
+        }
+
+        a {
+            display: flex;
+            gap: 4px;
+            color: white;
+            opacity: 0.6;
+            transition: 150ms ease-out;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 
-    main h4 {
-        font-size: 1rem;
-        font-weight: 400;
-        opacity: 0.6;
-    }
-
     article {
-        grid-column: span 2;
-    }
-
-    aside {
-        margin-top: 0.25rem;
-        line-height: 1.25rem;
-        opacity: 0.6;
+        grid-column: span 3;
+        margin-bottom: 256px;
     }
 
     @media screen and (width < 900px) {
