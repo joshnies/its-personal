@@ -44,6 +44,7 @@ const { title, summary, layout, cover, items } = Astro.props;
     figure img {
         width: 100%;
         height: auto;
+        border-radius: 8px;
     }
 
     footer {
@@ -81,7 +82,12 @@ const { title, summary, layout, cover, items } = Astro.props;
             grid-column: span 2;
             opacity: 0.6;
             margin-top: 1.75rem;
+            line-height: 1.25rem;
         }
+    }
+
+    #items {
+        line-height: 1.25rem;
     }
 
     #items.layout__square {
