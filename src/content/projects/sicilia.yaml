@@ -1,19 +1,18 @@
 title: Sicilia
 subtitle: Lightweight game engine for Linux
-summary: Synchronous collaboration tool that leverages spatial audio and ambient presence in a decentralized environment for privacy-focused, human-centric remote workplaces.
+summary: Lightweight, Linux-native game engine with a minimal editor designed for rapid use through keybindings.
 pubDate: 2025-10-02
 layout: full_width
-cover: assets/vela_vertical_slice.png
+cover: assets/sicilia_idle.png
 items:
-  - image: assets/vela_menu_bar.png
-    caption: Native macOS menu bar application designed to stay out of your way while remaining easily accessible. Team members currently available to chat display directly in the menu bar alongside the name of the room you’re in. The active speaker is highlighted while talking.
-  - image: assets/vela_default.png
-    caption: Compact view of your team with quick actions to turn on your camera or share your screen, all without needing to schedule a meeting ahead of time. Just start talking, not typing.
-  - image: assets/vela_otp.png
-    caption: One-time password authentication via email.
-  - image: assets/vela_space_create_or_join.png
-    caption: Initial onboarding screen after signing in.
-  - image: assets/vela_id_onboarding.png
-    caption: A novel approach to team onboarding — create your digital ID that displays when you’re avatar is hovered by others within the app.
-  - image: assets/vela_id.png
-    caption: The goal here was to bring the remote workplace just a bit closer to the in-office experience and create a stronger sense of belonging among employees.
+  - image: assets/sicilia_inspector.png
+    caption: Streamlined inspector activated via keyboard shortcut while an entity is selected.
+  - image: assets/sicilia_material_editor.png
+    caption: Simple material editor for the built-in PBR shader, activated via keyboard shortcut.
+  - image: assets/sicilia_library.png
+    caption: Library for drag-and-drop level design.
+  - image: assets/sicilia_inspector_docked.png
+    caption: Docked inspector panel with an entity heirarchy. An environment tab is also available to edit relevent settings, such as global lighting parameters.
+  - image: assets/sicilia_console_docked.png
+    caption: Panel for viewing and searching through engine logs.
+
