@@ -78,6 +78,7 @@ const { active } = Astro.props;
             id="nav__mobile-button"
             type="button"
             aria-label="Toggle navigation"
+            aria-expanded="false"
             aria-controls="nav__mobile"
         >
             <span />
@@ -114,7 +115,8 @@ const { active } = Astro.props;
     #nav__mobile {
         display: none;
         flex-direction: column;
-        justify-content: end;
+        align-items: end;
+        gap: 1.25rem;
 
         position: absolute;
         top: 0;
@@ -123,8 +125,9 @@ const { active } = Astro.props;
         bottom: 0;
 
         font-size: 3rem;
-        line-height: 4rem;
-        padding-bottom: 1.5rem;
+        line-height: 2.5rem;
+        margin-top: calc(40px + 1.875rem);
+        padding: 0 24px;
         
         background: black;
 
