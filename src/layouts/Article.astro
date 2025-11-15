@@ -1,144 +1,129 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+
+import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
+
 import { formatDate } from "../lib/util";
-import Signature from "../../public/signature.svg";
-import RSSLink from "../components/RSSLink.astro";
+import { SITE_DESCRIPTION } from "../consts";
 
 type Props = CollectionEntry<"articles">["data"];
 
-const { title, description, pubDate } = Astro.props;
+const { title, pubDate } = Astro.props;
 ---
 
 <html lang="en">
     <head>
-        <BaseHead title={title} description={description} />
-        <meta name="fediverse:creator" content="@joshnies@mastodon.social" />
+        <BaseHead title={title} description={SITE_DESCRIPTION} />
+        <meta name="fediverse:creator" content="@joshnies.bsky.social" />
     </head>
     <body>
-        <Header />
+        <Nav active="journal" />
+        <h1>{title}/</h1>
         <main>
-            <section id="frontmatter">
-                <div id="frontmatter-topline">
-                    <time>{formatDate(pubDate)}</time>
-                    <RSSLink />
-                </div>
-                <h1>{title}</h1>
-            </section>
+            <time>{formatDate(pubDate)}</time>
+            <a href="#" class="frontmatter-link"><BlueskyIcon />Share on Bluesky</a>
+            <h4>About the author</h4>
             <article>
                 <slot />
             </article>
-            <Signature id="signature" aria-label="Signature" />
+            <aside>
+                Software engineer, designer and entrepreneur focused on building
+                humanely-designed, relentlessly-fast products that bring true
+                value and delight to others.
+                <br />
+                <br />
+                A devout Christ-follower, I hope to encourage other believers to
+                reach their full potential and serve others as Christ serves us.
+                <br />
+                <br />
+                Based in Tampa, FL, USA.
+            </aside>
         </main>
-        <Footer />
-    </body><style lang="scss">
-        main {
-            padding: 1rem;
-        }
-
-        #frontmatter {
-            max-width: 900px;
-            margin: 0 auto;
-            padding-top: 3rem;
-
-            time {
-                display: flex;
-                align-items: center;
-                gap: 0.25rem;
-                font-size: 0.8125rem;
-                opacity: 0.8;
-
-                svg {
-                    width: 1rem;
-                    height: 1rem;
-                    transform: rotate(90deg);
-                }
-            }
-
-            h1 {
-                font-size: 2.25rem;
-                font-weight: normal;
-                letter-spacing: -1.5px;
-                line-height: 2.5rem;
-                margin-top: 0.5rem;
-            }
-        }
-
-        #frontmatter-topline {
-            display: flex;
-            gap: 1rem;
-        }
-
-        article {
-            max-width: 650px;
-            font-size: 1rem;
-            margin: 0 auto;
-            padding-top: 2rem;
-        }
-
-        #signature {
-            margin: 0 auto;
-            margin-top: 4rem;
-        }
-
-        @media screen and (width >= 900px) {
-            #frontmatter {
-                padding-top: 8rem;
-
-                h1 {
-                    font-size: 4rem;
-                    letter-spacing: -3px;
-                    line-height: 4.5rem;
-                }
-            }
-
-            article {
-                padding-top: 6rem;
-            }
-        }
-    </style>
-
-    <style lang="scss" is:global>
-        article {
-            h2 {
-                font-weight: normal;
-                margin-top: 2rem;
-                margin-bottom: 0.5rem;
-            }
-
-            a {
-                text-decoration: none;
-                padding: 0 0.125rem;
-                transition: 100ms ease-out;
-            }
-        }
-
-        /** light theme */
-        html.light article {
-            a {
-                background-color: rgba(#000, 0.07);
-                color: rgba(#000, 0.6);
-
-                &:hover {
-                    color: black;
-                    background-color: rgba(#000, 0.15);
-                }
-            }
-        }
-
-        /** dark theme */
-        html:not(.light) article {
-            a {
-                background-color: rgba(#fff, 0.15);
-                color: rgba(#fff, 0.7);
-
-                &:hover {
-                    color: white;
-                    background-color: rgba(#fff, 0.2);
-                }
-            }
-        }
-    </style>
+        <!-- <Footer /> -->
+    </body>
 </html>
+
+<style lang="scss">
+    h1 {
+        grid-column: 2 / 4;
+        grid-row: span 2;
+        font-size: 4.75rem;
+        font-weight: 400;
+        line-height: 4.625rem;
+    }
+
+    main {
+        grid-column: 2 / 5;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1.5rem 1fr;
+        gap: 1.5rem;
+
+        height: 100%;
+    }
+
+    time {
+        opacity: 0.6;
+    }
+
+    .frontmatter-link {
+        display: flex;
+        gap: 4px;
+        color: white;
+        opacity: 0.6;
+        transition: 150ms ease-out;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    main h4 {
+        font-size: 1rem;
+        font-weight: 400;
+        opacity: 0.6;
+    }
+
+    article {
+        grid-column: span 2;
+    }
+
+    aside {
+        opacity: 0.6;
+    }
+
+    @media screen and (width < 900px) {
+    }
+</style>
+
+<style lang="scss" is:global>
+    article a {
+        transition: 150ms ease-out;
+    }
+
+    /** light theme */
+    html.light article {
+        a {
+            color: rgba(#000, 0.6);
+
+            &:hover {
+                color: black;
+            }
+        }
+    }
+
+    /** dark theme */
+    html:not(.light) article {
+        a {
+            color: rgba(#fff, 0.7);
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+</style>
