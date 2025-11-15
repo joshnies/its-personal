@@ -1,10 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
+import BlueskyShareLink from "../components/BlueskyShareLink.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
-
-import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
 
 import { formatDate } from "../lib/util";
 import { BSKY_HANDLE, SITE_DESCRIPTION } from "../consts";
@@ -12,8 +11,6 @@ import { BSKY_HANDLE, SITE_DESCRIPTION } from "../consts";
 type Props = CollectionEntry<"articles">["data"];
 
 const { title, pubDate } = Astro.props;
-
-const bskyText = Astro.url.href;
 ---
 
 <html lang="en">
@@ -28,13 +25,7 @@ const bskyText = Astro.url.href;
                 <h1>{title}/</h1>
                 <section id="frontmatter">
                     <time>{formatDate(pubDate)}</time>
-                    <a
-                        href={`https://bsky.app/intent/compose?text=${bskyText}`}
-                        target="_blank"
-                        referrerpolicy="no-referrer"
-                    >
-                        <BlueskyIcon />Share on Bluesky
-                    </a>
+                    <BlueskyShareLink />
                 </section>
                 <article>
                     <slot />
@@ -65,18 +56,6 @@ const bskyText = Astro.url.href;
 
         time {
             opacity: 0.6;
-        }
-
-        a {
-            display: flex;
-            gap: 4px;
-            color: white;
-            opacity: 0.6;
-            transition: 150ms ease-out;
-
-            &:hover {
-                opacity: 1;
-            }
         }
     }
 
