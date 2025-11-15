@@ -24,7 +24,7 @@ const projects = defineCollection({
           image: image(),
           caption: z.string(),
         }),
-      ),
+      ).optional(),
     }),
 });
 
