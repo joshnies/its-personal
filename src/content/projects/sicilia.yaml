@@ -1,7 +1,7 @@
-title: Vela
-subtitle: Synchronous workplace collaboration tool
+title: Sicilia
+subtitle: Lightweight game engine for Linux
 summary: Synchronous collaboration tool that leverages spatial audio and ambient presence in a decentralized environment for privacy-focused, human-centric remote workplaces.
-pubDate: 2025-09-02
+pubDate: 2025-10-02
 cover: ../../../public/projects/vela_vertical_slice.png
 items:
   - image: ../../../public/projects/vela_menu_bar.png
