@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
@@ -7,25 +8,44 @@ import Nav from "../components/Nav.astro";
 import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
 
 import { formatDate } from "../lib/util";
-import { SITE_DESCRIPTION } from "../consts";
+import { BSKY_HANDLE, SITE_DESCRIPTION } from "../consts";
 
 type Props = CollectionEntry<"projects">["data"];
 
-const { title, summary, pubDate, cover, items } = Astro.props;
+const { title, summary, layout, cover, items } = Astro.props;
 ---
 
 <html lang="en">
     <head>
         <BaseHead title={title} description={SITE_DESCRIPTION} />
-        <meta name="fediverse:creator" content="@joshnies.bsky.social" />
+        <meta name="fediverse:creator" content={BSKY_HANDLE} />
     </head>
     <body>
         <Nav />
-        <h1>{title}/</h1>
+        <main>
+            <Image id="cover" src={cover} alt="" />
+            <section id="frontmatter">
+                <h1>{title}/</h1>
+                <p>{summary}</p>
+            </section>
+            <section id="items" class={`layout__${layout}`}>
+                {items.map(i => (
+                    <figure>
+                        <Image src={i.image}, alt="" />
+                        <figcaption>{i.caption}</figcaption>
+                    </figure>
+                ))}
+            </section>
+        </main>
     </body>
 </html>
 
 <style lang="scss" is:global>
+    figure img {
+        width: 100%;
+        height: auto;
+    }
+
     footer {
         display: flex;
         align-items: end;
@@ -35,6 +55,55 @@ const { title, summary, pubDate, cover, items } = Astro.props;
 </style>
 
 <style lang="scss">
+    main {
+        grid-column: span 5;
+    }
+
+    #cover {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    #frontmatter {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 8rem;
+
+        h1 {
+            grid-column: span 3;
+            font-size: 6rem;
+            font-weight: 400;
+        }
+
+        p {
+            grid-column: span 2;
+            opacity: 0.6;
+            margin-top: 1.75rem;
+        }
+    }
+
+    #items.layout__square {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    #items.layout__fullwidth {
+    }
+
+    #items.layout__supermassive {
+    }
+
+    figure {
+        margin-bottom: 8rem;
+    }
+
+    figcaption {
+        margin-top: 1rem;
+    }
+
     @media screen and (width < 900px) {
     }
 </style>

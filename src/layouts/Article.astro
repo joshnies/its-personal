@@ -7,7 +7,7 @@ import Nav from "../components/Nav.astro";
 import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
 
 import { formatDate } from "../lib/util";
-import { SITE_DESCRIPTION } from "../consts";
+import { BSKY_HANDLE, SITE_DESCRIPTION } from "../consts";
 
 type Props = CollectionEntry<"articles">["data"];
 
@@ -19,7 +19,7 @@ const bskyText = Astro.url.href;
 <html lang="en">
     <head>
         <BaseHead title={title} description={SITE_DESCRIPTION} />
-        <meta name="fediverse:creator" content="@joshnies.bsky.social" />
+        <meta name="fediverse:creator" content={BSKY_HANDLE} />
     </head>
     <body>
         <Nav active="journal" />
