@@ -9,13 +9,14 @@ const articles = defineCollection({
   }),
 });
 
-const designs = defineCollection({
-  loader: glob({ base: "./src/content/designs", pattern: "**/*.{yaml,yml}" }),
+const projects = defineCollection({
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.{yaml,yml}" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      description: z.string(),
-      year: z.number(),
+      summary: z.string(),
+      thumbCaption: z.string(),
+      pubDate: z.coerce.date(),
       cover: image(),
       items: z.array(
         z.object({
@@ -26,4 +27,5 @@ const designs = defineCollection({
     }),
 });
 
-export const collections = { articles, designs };
+export const collections = { articles, projects };
+

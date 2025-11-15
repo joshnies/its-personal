@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+
+import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
+
+import { formatDate } from "../lib/util";
+import { SITE_DESCRIPTION } from "../consts";
+
+type Props = CollectionEntry<"projects">["data"];
+
+const { title, summary, pubDate, cover, items } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={SITE_DESCRIPTION} />
+        <meta name="fediverse:creator" content="@joshnies.bsky.social" />
+    </head>
+    <body>
+        <Nav />
+        <h1>{title}/</h1>
+    </body>
+</html>
+
+<style lang="scss" is:global>
+    footer {
+        display: flex;
+        align-items: end;
+        grid-column: span 5;
+        padding-bottom: 1rem;
+    }
+</style>
+
+<style lang="scss">
+    @media screen and (width < 900px) {
+    }
+</style>
+
