@@ -10,7 +10,7 @@ import ArrowOutward from "../../public/icons/material_symbols_arrow_outward.svg"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { formatDate} from '../lib/util';
 
-const articles = (await getCollection("articles")).sort(
+const logs = (await getCollection("logs")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
@@ -39,15 +39,15 @@ const articles = (await getCollection("articles")).sort(
                         </tr>
                     </thead>
                     <tbody>
-                        {articles.map(article => (
+                        {logs.map(log => (
                             <tr>
                                 <td class="title">
-                                    <a href={`journal/${article.id}`}>
-                                        {article.data.title}
+                                    <a href={`journal/${log.id}`}>
+                                        {log.data.title}
                                         <ArrowOutward class="desktop" />
                                     </a>
                                 </td>
-                                <td>{formatDate(article.data.pubDate)}</td>
+                                <td>{formatDate(log.data.pubDate)}</td>
                             </tr>
                         ))}
                     </tbody>

@@ -8,7 +8,7 @@ import Nav from "../components/Nav.astro";
 import { formatDate } from "../lib/util";
 import { BSKY_HANDLE, SITE_DESCRIPTION } from "../consts";
 
-type Props = CollectionEntry<"articles">["data"];
+type Props = CollectionEntry<"logs">["data"];
 
 const { title, pubDate } = Astro.props;
 ---
