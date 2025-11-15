@@ -124,5 +124,29 @@ const articles = (await getCollection("articles")).sort(
             }
         }
     }
+
+    @media screen and (width < 1024px) {
+        h1 {
+            width: 100%;
+            font-size: 2rem;
+            line-height: 2.25rem;
+        }
+
+        .section-title h4 {
+            font-size: 0.875rem;
+        }
+
+        .section-title span {
+            width: 100%;
+        }
+
+        tbody tr {
+            font-size: 0.875rem;
+
+            .title {
+                font-size: 1.5rem;
+            }
+        }
+    }
 </style>
 
