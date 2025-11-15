@@ -36,7 +36,8 @@ const projects = (await getCollection("projects")).sort(
                         <tr>
                             <td class="title">
                                 <a href={`projects/${p.id}`}>
-                                {p.data.title} — {p.data.subtitle}<ArrowOutward />
+                                    {p.data.title} — {p.data.subtitle}
+                                    <ArrowOutward class="desktop" />
                                 </a>
                             </td>
                             <td>{formatDate(p.data.pubDate)}</td>
@@ -81,6 +82,16 @@ const projects = (await getCollection("projects")).sort(
         &:hover {
             background: white;
             color: black;
+
+            .title a {
+                color: black;
+            }
+        }
+
+        &:active {
+            background: rgba(white, 0.8);
+            color: black;
+
             .title a {
                 color: black;
             }
@@ -89,6 +100,7 @@ const projects = (await getCollection("projects")).sort(
         .title {
             font-size: 2rem;
             padding-left: 2px;
+            padding-right: 1rem;
 
             a {
                 display: flex;
@@ -102,6 +114,23 @@ const projects = (await getCollection("projects")).sort(
                 height: 32px;
                 margin-top: 6px;
                 color: black;
+            }
+        }
+    }
+
+    @media screen and (width < 1024px) {
+        .desktop {
+            display: none;
+        }
+
+        tbody tr {
+            height: auto;
+            font-size: 0.875rem;
+
+            .title {
+                font-size: 1.5rem;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
             }
         }
     }
