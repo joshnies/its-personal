@@ -22,8 +22,13 @@ const articles = (await getCollection("articles")).sort(
     </head>
     <body>
         <Nav active="journal" />
-        <h1>Engineer, designer & entrepreneur building humane software to solve real problems.</h1>
-        <div class="section-title"><div><h4>Journal</h4><span /></div></div>
+        <h1>
+            Engineer, designer & entrepreneur building humane software to solve
+            real problems.
+        </h1>
+        <div class="section-title">
+            <div><h4>Journal</h4><span /></div>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -34,7 +39,11 @@ const articles = (await getCollection("articles")).sort(
             <tbody>
                 {articles.map(article => (
                     <tr class="row">
-                        <td class="title"><a href={`journal/${article.id}`}>{article.data.title}<ArrowOutward /></a></td>
+                        <td class="title">
+                            <a href={`journal/${article.id}`}>
+                                {article.data.title}<ArrowOutward />
+                            </a>
+                        </td>
                         <td>{formatDate(article.data.pubDate)}</td>
                     </tr>
                 ))}

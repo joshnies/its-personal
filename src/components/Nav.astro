@@ -1,8 +1,4 @@
 ---
-// import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
-// import GitHubIcon from "../../public/icons/mdi_github.svg";
-// import TwitterIcon from "../../public/icons/mdi_twitter.svg";
-
 interface Props {
     active: "journal" | "projects" | "about";
 }
@@ -46,6 +42,7 @@ const { active } = Astro.props;
                     href="https://github.com/joshnies"
                     target="_blank"
                     referrerpolicy="no-referrer"
+                    rel="me"
                     aria-label="GitHub"
                 >
                     GitHub

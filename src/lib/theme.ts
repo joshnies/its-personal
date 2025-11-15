@@ -42,3 +42,4 @@ export function getTheme(): Theme {
 export function setTheme(theme: Theme) {
   localStorage.setItem(LOCAL_STORAGE_THEME, theme);
 }
+
