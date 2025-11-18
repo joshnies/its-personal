@@ -15,94 +15,96 @@ const { title, pubDate } = Astro.props;
 ---
 
 <html lang="en">
-    <head>
-        <BaseHead title={title} description={SITE_DESCRIPTION} />
-        <meta name="fediverse:creator" content={BSKY_HANDLE} />
-    </head>
-    <body>
-        <main>
-            <Nav />
-            <div id="container">
-                <h1>{title}/</h1>
-                <section id="frontmatter">
-                    <time>{formatDate(pubDate)}</time>
-                    <!-- <BlueskyShareLink /> -->
-                    <TwitterShareLink />
-                </section>
-                <article>
-                    <slot />
-                </article>
-            </div>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <BaseHead title={title} description={SITE_DESCRIPTION} />
+    <meta name="fediverse:creator" content={BSKY_HANDLE} />
+  </head>
+  <body>
+    <main>
+      <Nav />
+      <div id="container">
+        <h1>{title}/</h1>
+        <section id="frontmatter">
+          <time>{formatDate(pubDate)}</time>
+          <!-- <BlueskyShareLink /> -->
+          <TwitterShareLink />
+        </section>
+        <article>
+          <slot />
+        </article>
+      </div>
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <style lang="scss">
-    #container {
-        max-width: 700px;
-        margin: 0 auto;
-    }
+  #container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
 
-    h1 {
-        font-size: 4.75rem;
-        font-weight: 400;
-        line-height: 4.625rem;
-        margin-bottom: 96px;
-    }
+  h1 {
+    font-size: 4.75rem;
+    font-weight: 400;
+    line-height: 4.625rem;
+    margin-bottom: 96px;
+  }
 
-    #frontmatter {
-        display: flex;
-        gap: 64px;
-        padding-bottom: 24px;
+  #frontmatter {
+    display: flex;
+    gap: 64px;
+    padding-bottom: 24px;
 
-        time {
-            opacity: 0.6;
-        }
+    time {
+      opacity: 0.6;
     }
+  }
 
-    article {
-        grid-column: span 3;
-        margin-bottom: 256px;
-    }
+  article {
+    grid-column: span 3;
+    margin-bottom: 256px;
+    font-size: 1.25rem;
+  }
 
-    @media screen and (width < 900px) {
-    }
+  @media screen and (width < 900px) {
+  }
 </style>
 
 <style lang="scss" is:global>
-    article {
-        font-size: 1.25rem;
+  article a {
+    transition: 150ms ease-out;
+  }
+
+  article h2 {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  article blockquote {
+    font-size: 2.5rem;
+    line-height: 2.675rem;
+  }
+
+  /** light theme */
+  html.light article {
+    a {
+      color: rgba(#000, 0.6);
+
+      &:hover {
+        color: black;
+      }
     }
+  }
 
-    article a {
-        transition: 150ms ease-out;
+  /** dark theme */
+  html:not(.light) article {
+    a {
+      color: rgba(#fff, 0.7);
+
+      &:hover {
+        color: white;
+      }
     }
-
-    article h2 {
-        font-size: 2.5rem;
-        margin-top: 3rem;
-    }
-
-    /** light theme */
-    html.light article {
-        a {
-            color: rgba(#000, 0.6);
-
-            &:hover {
-                color: black;
-            }
-        }
-    }
-
-    /** dark theme */
-    html:not(.light) article {
-        a {
-            color: rgba(#fff, 0.7);
-
-            &:hover {
-                color: white;
-            }
-        }
-    }
+  }
 </style>

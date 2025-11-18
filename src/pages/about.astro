@@ -4,7 +4,6 @@ import { Image } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
-import AboutImage from "../img/about.JPEG";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
@@ -15,7 +14,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <!-- <Image src={AboutImage} alt = "" id="me" /> -->
     <div id="background-image"></div>
     <main>
       <Nav active="about" />
@@ -69,6 +67,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     width: 45%;
     max-width: 700px;
     font-size: 1.25rem;
+    padding-bottom: 16rem;
 
     span {
       background: white;
@@ -77,5 +76,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   }
 
   @media screen and (width < 1024px) {
+    #background-image {
+      display: none;
+    }
+
+    p {
+      width: 100%;
+    }
   }
 </style>

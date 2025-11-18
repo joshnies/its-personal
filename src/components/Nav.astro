@@ -1,218 +1,242 @@
 ---
 interface Props {
-    active?: "journal" | "projects" | "about" | undefined;
+  active?: "journal" | "projects" | "about" | undefined;
 }
 
 const { active } = Astro.props;
 ---
 
 <header>
-    <nav>
-        <a id="nav__home-link" href="/">Josh Nies</a>
-        <ul id="nav__desktop">
-            <li><a href="/" class={active === "journal" ? "active": ""}>Journal,</a></li>
-            <li><a href="/projects" class={active === "projects" ? "active": ""}>Projects,</a></li>
-            <li><a href="/about" class={active === "about" ? "active": ""}>About,</a></li>
-            <!-- <li> -->
-                <!-- <a -->
-                    <!-- href="https://bsky.app/profile/joshnies.bsky.social" -->
-                    <!-- target="_blank" -->
-                    <!-- referrerpolicy="no-referrer" -->
-                    <!-- rel="me" -->
-                    <!-- aria-label="Bluesky" -->
-                <!-- > -->
-                    <!-- Bluesky, -->
-                <!-- </a> -->
-            <!-- </li> -->
-            <li>
-                <a
-                    href="https://x.com/_joshnies"
-                    target="_blank"
-                    referrerpolicy="no-referrer"
-                    rel="me"
-                    aria-label="Twitter"
-                >
-                    Twitter,
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://github.com/joshnies"
-                    target="_blank"
-                    referrerpolicy="no-referrer"
-                    rel="me"
-                    aria-label="GitHub"
-                >
-                    GitHub
-                </a>
-            </li>
-        </ul>
-        <ul id="nav__mobile" data-open="false">
-            <li><a href="/" class={active === "journal" ? "active": ""}>Journal</a></li>
-            <li><a href="/projects" class={active === "projects" ? "active": ""}>Projects</a></li>
-            <li><a href="/about" class={active === "about" ? "active": ""}>About</a></li>
-            <li>
-                <a
-                    href="https://bsky.app/profile/joshnies.bsky.social"
-                    target="_blank"
-                    referrerpolicy="no-referrer"
-                    rel="me"
-                    aria-label="Bluesky"
-                >
-                    Bluesky
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://github.com/joshnies"
-                    target="_blank"
-                    referrerpolicy="no-referrer"
-                    rel="me"
-                    aria-label="GitHub"
-                >
-                    GitHub
-                </a>
-            </li>
-        </ul>
-        <button
-            id="nav__mobile-button"
-            type="button"
-            aria-label="Toggle navigation"
-            aria-expanded="false"
-            aria-controls="nav__mobile"
+  <nav>
+    <a id="nav__home-link" href="/">Josh Nies</a>
+    <ul id="nav__desktop">
+      <li>
+        <a href="/" class={active === "journal" ? "active" : ""}>Journal,</a>
+      </li>
+      <li>
+        <a href="/projects" class={active === "projects" ? "active" : ""}
+          >Projects,</a>
+      </li>
+      <li>
+        <a href="/about" class={active === "about" ? "active" : ""}>About,</a>
+      </li>
+      <!-- <li> -->
+      <!-- <a -->
+      <!-- href="https://bsky.app/profile/joshnies.bsky.social" -->
+      <!-- target="_blank" -->
+      <!-- referrerpolicy="no-referrer" -->
+      <!-- rel="me" -->
+      <!-- aria-label="Bluesky" -->
+      <!-- > -->
+      <!-- Bluesky, -->
+      <!-- </a> -->
+      <!-- </li> -->
+      <li>
+        <a
+          href="https://x.com/_joshnies"
+          target="_blank"
+          referrerpolicy="no-referrer"
+          rel="me"
+          aria-label="Twitter"
         >
-            <span />
-            <span />
-            <span />
-        </button>
-    </nav>
+          Twitter,
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/joshnies"
+          target="_blank"
+          referrerpolicy="no-referrer"
+          rel="me"
+          aria-label="GitHub"
+        >
+          GitHub
+        </a>
+      </li>
+    </ul>
+    <ul id="nav__mobile" data-open="false">
+      <li>
+        <a href="/" class={active === "journal" ? "active" : ""}>Journal</a>
+      </li>
+      <li>
+        <a href="/projects" class={active === "projects" ? "active" : ""}
+          >Projects</a>
+      </li>
+      <li>
+        <a href="/about" class={active === "about" ? "active" : ""}>About</a>
+      </li>
+      <!-- <li> -->
+      <!-- <a -->
+      <!-- href="https://bsky.app/profile/joshnies.bsky.social" -->
+      <!-- target="_blank" -->
+      <!-- referrerpolicy="no-referrer" -->
+      <!-- rel="me" -->
+      <!-- aria-label="Bluesky" -->
+      <!-- > -->
+      <!-- Bluesky -->
+      <!-- </a> -->
+      <!-- </li> -->
+      <li>
+        <a
+          href="https://x.com/_joshnies"
+          target="_blank"
+          referrerpolicy="no-referrer"
+          rel="me"
+          aria-label="Twitter"
+        >
+          Twitter
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/joshnies"
+          target="_blank"
+          referrerpolicy="no-referrer"
+          rel="me"
+          aria-label="GitHub"
+        >
+          GitHub
+        </a>
+      </li>
+    </ul>
+    <button
+      id="nav__mobile-button"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="nav__mobile"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
 </header>
 
 <style lang="scss">
-    header {
-        height: 128px;
-        font-size: 1.25rem;
-}
+  header {
+    height: 128px;
+    font-size: 1.25rem;
+  }
 
-    nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #nav__home-link {
+    opacity: 1;
+    z-index: 10;
+  }
+
+  #nav__desktop {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+  }
+
+  #nav__mobile {
+    display: none;
+    flex-direction: column;
+    align-items: end;
+    gap: 1.25rem;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    font-size: 3rem;
+    line-height: 2.5rem;
+    margin-top: calc(40px + 1.875rem);
+    padding: 0 24px;
+    z-index: 1000;
+
+    background: black;
+
+    a {
+      transition: 100ms ease-out;
+    }
+  }
+
+  #nav__mobile-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background: none;
+    border: none;
+    transition: 100ms ease-out;
+    z-index: 10;
+
+    &:active {
+      opacity: 0.6;
     }
 
-    #nav__home-link {
-        opacity: 1;
-        z-index: 10;
+    span {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: white;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    color: white;
+    opacity: 0.6;
+    mix-blend-mode: difference;
+    text-decoration: none;
+    transition: 150ms ease-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (width < 1024px) {
+    header {
+      height: 64px;
     }
 
     #nav__desktop {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        padding: 0;
+      display: none;
     }
 
-    #nav__mobile {
-        display: none;
-        flex-direction: column;
-        align-items: end;
-        gap: 1.25rem;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        font-size: 3rem;
-        line-height: 2.5rem;
-        margin-top: calc(40px + 1.875rem);
-        padding: 0 24px;
-        z-index: 1000;
-        
-        background: black;
-
-        a {
-            transition: 100ms ease-out;
-        }
+    #nav__mobile[data-open="true"] {
+      display: flex;
     }
 
     #nav__mobile-button {
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 20px;
-        height: 20px;
-        padding: 0;
-        background: none;
-        border: none;
-        transition: 100ms ease-out;
-        z-index: 10;
-
-        &:active {
-            opacity: 0.6;
-        }
-
-        span {
-            content: '';
-            display: block;
-            height: 2px;
-            width: 100%;
-            background: white;
-        }
+      display: flex;
     }
-
-    li {
-        list-style: none;
-    }
-
-    a {
-        color: white;
-        opacity: 0.6;
-        mix-blend-mode: difference;
-        text-decoration: none;
-        transition: 150ms ease-out;
-
-        &:hover {
-            opacity: 0.8;
-        }
-
-        &.active {
-            opacity: 1;
-        }
-    }
-
-    @media screen and (width < 1024px) {
-        header {
-            height: 64px;
-        }
-
-        #nav__desktop {
-            display: none;
-        }
-
-        #nav__mobile[data-open="true"] {
-            display: flex;
-        }
-
-        #nav__mobile-button {
-            display: flex;
-        }
-    }
+  }
 </style>
 
 <script is:inline>
-    const menu = document.querySelector("#nav__mobile");
-    const button = document.querySelector("#nav__mobile-button");
+  const menu = document.querySelector("#nav__mobile");
+  const button = document.querySelector("#nav__mobile-button");
 
-    if (menu && button) {
-        button.addEventListener("click", () => {
-            const isOpen = menu.dataset.open === "true";
-            const next = (!isOpen).toString();
+  if (menu && button) {
+    button.addEventListener("click", () => {
+      const isOpen = menu.dataset.open === "true";
+      const next = (!isOpen).toString();
 
-            menu.dataset.open = next;
-            button.setAttribute("aria-expanded", next);
-        });
-    }
+      menu.dataset.open = next;
+      button.setAttribute("aria-expanded", next);
+    });
+  }
 </script>
-

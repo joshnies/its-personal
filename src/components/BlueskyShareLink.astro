@@ -3,23 +3,23 @@ import BlueskyIcon from "../../public/icons/ri_bluesky.svg";
 ---
 
 <a
-    href={`https://bsky.app/intent/compose?text=${Astro.url.href}`}
-    target="_blank"
-    referrerpolicy="no-referrer"
+  href={`https://bsky.app/intent/compose?text=${Astro.url.href}`}
+  target="_blank"
+  referrerpolicy="no-referrer"
 >
-    <BlueskyIcon />Share on Bluesky
+  <BlueskyIcon />Share on Bluesky
 </a>
 
 <style lang="scss">
-    a {
-        display: flex;
-        gap: 4px;
-        color: white;
-        opacity: 0.6;
-        transition: 150ms ease-out;
+  a {
+    display: flex;
+    gap: 4px;
+    color: white;
+    opacity: 0.6;
+    transition: 150ms ease-out;
 
-        &:hover {
-            opacity: 1;
-        }
+    &:hover {
+      opacity: 1;
     }
+  }
 </style>

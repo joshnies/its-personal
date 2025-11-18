@@ -129,20 +129,23 @@ const { title, summary, layout, cover, items } = Astro.props;
     @media screen and (width < 1024px) {
         #frontmatter {
             gap: 0.5rem;
+            margin-top: 1rem;
 
             h1 {
-                grid-column: span 5;
-                font-size: 2rem;
-                line-height: 2.25rem;
+                grid-column: span 2;
+                font-size: 3rem;
+                line-height: 3.25rem;
             }
 
             aside {
-                grid-column: span 5;
+                grid-column: span 2;
                 margin-top: 0;
             }
 
             aside p {
-                margin-bottom: 0.5rem;
+                font-size: 1rem;
+                line-height: 1.125rem;
+                margin-bottom: 1.5rem;
             }
         }
 

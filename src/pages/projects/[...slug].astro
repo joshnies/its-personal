@@ -4,11 +4,11 @@ import { render } from "astro:content";
 import Project from "../../layouts/Project.astro";
 
 export async function getStaticPaths() {
-    const projects = await getCollection("projects");
-    return projects.map((p) => ({
-        params: { slug: p.id },
-        props: p,
-    }));
+  const projects = await getCollection("projects");
+  return projects.map((p) => ({
+    params: { slug: p.id },
+    props: p,
+  }));
 }
 
 type Props = CollectionEntry<"projects">;
@@ -18,14 +18,14 @@ const { Content } = await render(project);
 ---
 
 <Project {...project.data}>
-    <Content />
+  <Content />
 </Project>
 
 <script>
-    import { getTheme } from "../../lib/theme";
+  import { getTheme } from "../../lib/theme";
 
-    const theme = getTheme();
-    if (theme == "light") {
-        document.documentElement.classList.add("light");
-    }
+  const theme = getTheme();
+  if (theme == "light") {
+    document.documentElement.classList.add("light");
+  }
 </script>

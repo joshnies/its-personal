@@ -19,7 +19,7 @@ piece of common startup community advice.
 My proposal, as difficult as it may sound, is to **build for excellence from the
 start rather than the minimum.**
 
-## Think before you step
+<br />
 
 An ever-present example of this problem is an
 [Electron](https://www.electronjs.org) application, where the full stack
@@ -49,7 +49,7 @@ can find yourself struggling for every minor product improvement because the
 codebase is chaotic and the user experience is abysmal. But hey, at least you
 beat everyone to market, am I right?
 
-## Redefinition
+<br />
 
 Ironically, I actually love what Weebly founder David Rusenko had to say about
 this topic during [an old YC talk](https://youtu.be/0LNQxT9LvM0?t=1580), stating
@@ -75,25 +75,28 @@ designs from existing products, even those outside of your industry, and build
 functional design prototypes, such as those in Figma or Sketch, where you can
 rapidly iterate on user experience before starting development.
 
-## Counterarguments
+<br />
 
 This is absolutely a two-faced problem. Intentionally putting more effort into
 the product before initial launch will obviously increase time-to-market and
 result in potentially higher development costs. You run the risk of building
 something incredibly refined but that nobody actually wants or needs. To prevent
-this, it’s still vital to spend time determining your customers personas,
-conducting proper customer interviews, and sending prototypes to others for them
-to try out and provide you with feedback.
+this, it’s still vital to identify your target audience, conducting customer
+interviews and sharing prototypes with others to obtain early feedback.
 
-## Final thoughts
+<br />
 
 I probably recall this photography quote I heard somewhere at least once a week,
 and one I believe is just as relevant to engineers as it is to creatives:
 
+<br />
+
 > “To create something of beauty is reason enough.”
 
+<br />
+
 The context being, of course, that no matter who sees, likes or comments on your
-works of art, creating the art itself is enough to warrant it’s existence.
+work of art, creating the art itself is enough to warrant it’s existence.
 
 <br />
 
