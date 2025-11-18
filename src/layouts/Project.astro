@@ -22,22 +22,24 @@ const { title, summary, layout, cover, items } = Astro.props;
     <body>
         <main>
             <Nav />
-            <Image id="cover" src={cover} alt="" />
-            <section id="frontmatter">
-                <h1>{title}/</h1>
-                <aside>
-                    <p>{summary}</p>
-                    <BlueskyShareLink />
-                </aside>
-            </section>
-            <section id="items" class={`layout__${layout}`}>
-                {items?.map(i => (
-                    <figure>
-                        <Image src={i.image}, alt="" />
-                        <figcaption>{i.caption}</figcaption>
-                    </figure>
-                ))}
-            </section>
+            <div id="container">
+                <Image id="cover" src={cover} alt="" />
+                <section id="frontmatter">
+                    <h1>{title}/</h1>
+                    <aside>
+                        <p>{summary}</p>
+                        <BlueskyShareLink />
+                    </aside>
+                </section>
+                <section id="items" class={`layout__${layout}`}>
+                    {items?.map(i => (
+                        <figure>
+                            <Image src={i.image}, alt="" />
+                            <figcaption>{i.caption}</figcaption>
+                        </figure>
+                    ))}
+                </section>
+            </div>
         </main>
         <Footer />
     </body>
@@ -61,6 +63,11 @@ const { title, summary, layout, cover, items } = Astro.props;
 <style lang="scss">
     main {
         grid-column: span 5;
+    }
+
+    #container {
+        max-width: 1024px;
+        margin: 0 auto;
     }
 
     #cover {
