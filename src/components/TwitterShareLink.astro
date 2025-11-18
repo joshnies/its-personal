@@ -1,0 +1,25 @@
+---
+import TwitterIcon from "../../public/icons/mdi_twitter.svg";
+---
+
+<a
+    href={`https://x.com/intent/tweet?text=${Astro.url.href}`}
+    target="_blank"
+    referrerpolicy="no-referrer"
+>
+    <TwitterIcon />Tweet
+</a>
+
+<style lang="scss">
+    a {
+        display: flex;
+        gap: 4px;
+        color: white;
+        opacity: 0.6;
+        transition: 150ms ease-out;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+</style>

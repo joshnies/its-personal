@@ -6,6 +6,7 @@ import BaseHead from "../components/BaseHead.astro";
 import BlueskyShareLink from "../components/BlueskyShareLink.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import TwitterShareLink from "../components/TwitterShareLink.astro";
 
 import { BSKY_HANDLE, SITE_DESCRIPTION } from "../consts";
 
@@ -28,7 +29,8 @@ const { title, summary, layout, cover, items } = Astro.props;
                     <h1>{title}/</h1>
                     <aside>
                         <p>{summary}</p>
-                        <BlueskyShareLink />
+                        <!-- <BlueskyShareLink /> -->
+                        <TwitterShareLink />
                     </aside>
                 </section>
                 <section id="items" class={`layout__${layout}`}>
