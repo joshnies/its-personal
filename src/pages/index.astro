@@ -8,161 +8,162 @@ import Nav from "../components/Nav.astro";
 import ArrowOutward from "../../public/icons/material_symbols_arrow_outward.svg";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { formatDate} from '../lib/util';
+import { formatDate } from "../lib/util";
 
 const logs = (await getCollection("logs")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <main>
-            <Nav active="journal" />
-            <h1>
-                Engineer, designer & entrepreneur building humane software to
-                solve real problems.
-            </h1>
-            <section>
-                <div class="section-title">
-                    <h4>Journal</h4><span />
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {logs.map(log => (
-                            <tr>
-                                <td class="title">
-                                    <a href={`journal/${log.id}`}>
-                                        {log.data.title}
-                                        <ArrowOutward class="desktop" />
-                                    </a>
-                                </td>
-                                <td>{formatDate(log.data.pubDate)}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </section>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <main>
+      <Nav active="journal" />
+      <h1>
+        Engineer, designer & entrepreneur building humane software to solve real
+        problems.
+      </h1>
+      <section>
+        <div class="section-title">
+          <h4>Journal</h4><span></span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              logs.map((log) => (
+                <tr>
+                  <td class="title">
+                    <a href={`journal/${log.id}`}>
+                      {log.data.title}
+                      <ArrowOutward class="desktop" />
+                    </a>
+                  </td>
+                  <td>{formatDate(log.data.pubDate)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <style lang="scss">
-    h1 {
-        width: 66%;
-        font-size: 4.75rem;
-        font-weight: 400;
-        line-height: 4.625rem;
+  h1 {
+    width: 66%;
+    font-size: 4.75rem;
+    font-weight: 400;
+    line-height: 4.625rem;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: calc(128px - 1.25rem);
+    margin-bottom: 1rem;
+    opacity: 0.6;
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 400;
     }
 
-    .section-title {
+    span {
+      content: "";
+      display: block;
+      width: 8rem;
+      height: 1px;
+      background: white;
+    }
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    height: 48px;
+    font-size: 1rem;
+    border-top: 1px solid rgba(white, 0.1);
+    transition: 0.1s ease-out;
+
+    &:hover {
+      background: white;
+      color: black;
+
+      .title a {
+        color: black;
+      }
+    }
+
+    &:active {
+      background: rgba(white, 0.8);
+      color: black;
+
+      .title a {
+        color: black;
+      }
+    }
+
+    .title {
+      font-size: 2rem;
+      padding-left: 2px;
+      padding-right: 1rem;
+
+      a {
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: calc(128px - 1.25rem);
-        margin-bottom: 1rem;
-        opacity: 0.6;
+        gap: 8px;
+        color: white;
+        text-decoration: none;
+      }
 
-        h4 {
-            font-size: 1.25rem;
-            font-weight: 400;
-        }
+      svg {
+        width: 32px;
+        height: 32px;
+        margin-top: 6px;
+        color: black;
+      }
+    }
+  }
 
-        span {
-            content: '';
-            display: block;
-            width: 8rem;
-            height: 1px;
-            background: white;
-        }
+  @media screen and (width < 1024px) {
+    .desktop {
+      display: none;
     }
 
-    thead {
-        display: none;
+    h1 {
+      width: 100%;
+      font-size: 2rem;
+      line-height: 2.25rem;
+    }
+
+    .section-title h4 {
+      font-size: 0.875rem;
+    }
+
+    .section-title span {
+      width: 100%;
     }
 
     tbody tr {
-        height: 48px;
-        font-size: 1rem;
-        border-top: 1px solid rgba(white, 0.1);
-        transition: 0.1s ease-out;
+      font-size: 0.875rem;
 
-        &:hover {
-            background: white;
-            color: black;
-
-            .title a {
-                color: black;
-            }
-        }
-
-        &:active {
-            background: rgba(white, 0.8);
-            color: black;
-
-            .title a {
-                color: black;
-            }
-        }
-
-        .title {
-            font-size: 2rem;
-            padding-left: 2px;
-            padding-right: 1rem;
-
-            a {
-                display: flex;
-                gap: 8px;
-                color: white;
-                text-decoration: none;
-            }
-
-            svg {
-                width: 32px;
-                height: 32px;
-                margin-top: 6px;
-                color: black;
-            }
-        }
+      .title {
+        font-size: 1.5rem;
+      }
     }
-
-    @media screen and (width < 1024px) {
-        .desktop {
-            display: none;
-        }
-        
-        h1 {
-            width: 100%;
-            font-size: 2rem;
-            line-height: 2.25rem;
-        }
-
-        .section-title h4 {
-            font-size: 0.875rem;
-        }
-
-        .section-title span {
-            width: 100%;
-        }
-
-        tbody tr {
-            font-size: 0.875rem;
-
-            .title {
-                font-size: 1.5rem;
-            }
-        }
-    }
+  }
 </style>
-
