@@ -16,25 +16,28 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   </head>
   <body>
     <!-- <Image src={AboutImage} alt = "" id="me" /> -->
-    <div id="background-image" />
+    <div id="background-image"></div>
     <main>
       <Nav active="about" />
       <h1>About</h1>
       <p>
-        Hey there, I’m Josh.
+        <span
+          >Building humane software to serve others as Christ serves us.</span
+        >
         <br /><br />
-        Christ-follower, software engineer, designer and entrepreneur. I build humanely-designed,
-        relentlessly-fast software that bring true delight to others and serve them
-        as Christ serves us.
+        I'm Josh(ua), a software engineer, designer and entrepreneur based in Tampa,
+        FL, USA. I've been blessed to have worked in the tech industry for nearly
+        a decade, where I've discovered and refined my niche as a hyper-minimalist
+        engineer and performance fanatic. I'm obsessed with simplicity and the smallest
+        of details, and through God's strength I hope to create a better now for
+        all of us.
         <br /><br />
-        By day, I work full-time (remote) as a Senior Software Engineer at MyCarrier
-        where my team and I build payment systems for some of the world’s largest
-        transportation companies.
+        By day, I work full-time as a Senior Software Engineer at MyCarrier where
+        my team and I build payment systems for some of the world’s largest transportation
+        companies. In my spare time, you'll find me spending time with my incredible
+        family, reading non-fiction or wondering off into something entirely new.
         <br /><br />
-        In my spare time, I’m either working on an unannounced project, playing video
-        games, or spending time with my incredible family.
-        <br /><br />
-        Based in Tampa, FL, USA.
+        Currently working on an unannounced project.
       </p>
     </main>
     <Footer />
@@ -50,7 +53,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     left: 50%;
     z-index: -999;
 
-    background-image: url('about.jpg');
+    background-image: url("about.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -65,10 +68,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   p {
     width: 45%;
     max-width: 700px;
-    font-size: 2rem;
-  }
+    font-size: 1.25rem;
 
-  #me {
+    span {
+      background: white;
+      color: black;
+    }
   }
 
   @media screen and (width < 1024px) {
