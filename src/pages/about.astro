@@ -1,33 +1,76 @@
 ---
+import { Image } from "astro:assets";
+
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import AboutImage from "../img/about.JPEG";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <main>
-            <Nav active="about" />
-            <h1>About</h1>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <!-- <Image src={AboutImage} alt = "" id="me" /> -->
+    <div id="background-image" />
+    <main>
+      <Nav active="about" />
+      <h1>About</h1>
+      <p>
+        Hey there, I’m Josh.
+        <br /><br />
+        Christ-follower, software engineer, designer and entrepreneur. I build humanely-designed,
+        relentlessly-fast software that bring true delight to others and serve them
+        as Christ serves us.
+        <br /><br />
+        By day, I work full-time (remote) as a Senior Software Engineer at MyCarrier
+        where my team and I build payment systems for some of the world’s largest
+        transportation companies.
+        <br /><br />
+        In my spare time, I’m either working on an unannounced project, playing video
+        games, or spending time with my incredible family.
+        <br /><br />
+        Based in Tampa, FL, USA.
+      </p>
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <style lang="scss">
-    h1 {
-        font-size: 4.75rem;
-        font-weight: 400;
-        line-height: 4.625rem;
-    }
+  #background-image {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 50%;
+    z-index: -999;
 
-    @media screen and (width < 1024px) {
-    }
+    background-image: url('about.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  h1 {
+    font-size: 4.75rem;
+    font-weight: 400;
+    line-height: 4.625rem;
+  }
+
+  p {
+    width: 45%;
+    max-width: 700px;
+    font-size: 2rem;
+  }
+
+  #me {
+  }
+
+  @media screen and (width < 1024px) {
+  }
 </style>
-
