@@ -83,6 +83,7 @@ const { title, pubDate } = Astro.props;
   article h2 {
     font-size: 2.5rem;
     margin-top: 3rem;
+    margin-bottom: 0.5rem;
   }
 
   article blockquote {
@@ -109,6 +110,13 @@ const { title, pubDate } = Astro.props;
       &:hover {
         color: white;
       }
+    }
+  }
+
+  @media screen and (width < 900px) {
+    article h2 {
+      font-size: 2rem;
+      line-height: 2.25rem;
     }
   }
 </style>
