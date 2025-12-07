@@ -29,8 +29,8 @@ const { title, summary, layout, cover, items } = Astro.props;
                     <h1>{title}/</h1>
                     <aside>
                         <p>{summary}</p>
-                        <!-- <BlueskyShareLink /> -->
-                        <TwitterShareLink />
+                        <BlueskyShareLink />
+                        <!-- <TwitterShareLink /> -->
                     </aside>
                 </section>
                 <section id="items" class={`layout__${layout}`}>
